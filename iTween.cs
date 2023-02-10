@@ -1,4 +1,3 @@
-
 // Copyright (c) 2011 Bob Berkebile (pixelplacment)
 // Please direct any bugs/comments/suggestions to http://pixelplacement.com
 //
@@ -41,9 +40,8 @@ using UnityEngine.UI;
 #endregion
 
 /// <summary>
-/// <para>Version: 2.1.0</para>	 
+/// <para>Version: 2.0.45</para>	 
 /// <para>Author: Bob Berkebile (http://pixelplacement.com)</para>
-/// <para>Editor: MohammedZero43</para>
 /// <para>Support: http://itween.pixelplacement.com</para>
 /// </summary>
 public class iTween : MonoBehaviour
@@ -749,6 +747,10 @@ public class iTween : MonoBehaviour
 		{
 			tempColor = fromColor = target.GetComponent<RawImage>().color;
 		}
+		else if (target.GetComponent(typeof(Image)))
+		{
+			tempColor = fromColor = target.GetComponent<Image>().color;
+		}
 		else if (target.GetComponent(typeof(TMPro.TextMeshProUGUI)))
 		{
 			tempColor = fromColor = target.GetComponent<TMPro.TextMeshProUGUI>().color;
@@ -803,6 +805,10 @@ public class iTween : MonoBehaviour
 		if (target.GetComponent(typeof(RawImage)))
 		{
 			target.GetComponent<RawImage>().color = fromColor;
+		}
+		else if (target.GetComponent(typeof(Image)))
+		{
+			target.GetComponent<Image>().color = fromColor;
 		}
 		else if (target.GetComponent(typeof(TMPro.TextMeshProUGUI)))
 		{
@@ -3559,6 +3565,11 @@ public class iTween : MonoBehaviour
 			colors = new Color[1, 3];
 			colors[0, 0] = colors[0, 1] = GetComponent<UnityEngine.UI.RawImage>().color;
 		}
+		else if (GetComponent(typeof(UnityEngine.UI.Image)))
+		{
+			colors = new Color[1, 3];
+			colors[0, 0] = colors[0, 1] = GetComponent<UnityEngine.UI.Image>().color;
+		}
 		else if (GetComponent(typeof(TMPro.TextMeshProUGUI)))
 		{
 			colors = new Color[1, 3];
@@ -4543,6 +4554,11 @@ public class iTween : MonoBehaviour
 			//GetComponent<RawImage>().color=colors[2];
 			GetComponent<RawImage>().color = colors[0, 2];
 		}
+		else if (GetComponent(typeof(Image)))
+		{
+			//GetComponent<RawImage>().color=colors[2];
+			GetComponent<Image>().color = colors[0, 2];
+		}
 		else if (GetComponent(typeof(TMPro.TextMeshProUGUI)))
 		{
 			//GetComponent<TMPro.TextMeshProUGUI>().material.color=colors[2];
@@ -4569,6 +4585,11 @@ public class iTween : MonoBehaviour
 			{
 				//GetComponent<RawImage>().color=colors[1];
 				GetComponent<RawImage>().color = colors[0, 1];
+			}
+			else if (GetComponent(typeof(Image)))
+			{
+				//GetComponent<RawImage>().color=colors[1];
+				GetComponent<Image>().color = colors[0, 1];
 			}
 			else if (GetComponent(typeof(TMPro.TextMeshProUGUI)))
 			{
@@ -5430,6 +5451,10 @@ public class iTween : MonoBehaviour
 		{
 			colors[0] = colors[1] = target.GetComponent<RawImage>().color;
 		}
+			if (target.GetComponent(typeof(Image)))
+		{
+			colors[0] = colors[1] = target.GetComponent<Image>().color;
+		}
 		else if (target.GetComponent(typeof(TMPro.TextMeshProUGUI)))
 		{
 			colors[0] = colors[1] = target.GetComponent<TMPro.TextMeshProUGUI>().material.color;
@@ -5479,6 +5504,11 @@ public class iTween : MonoBehaviour
 		{
 			target.GetComponent<RawImage>().color = colors[3];
 		}
+		else if (target.GetComponent(typeof(Image)))
+		{
+			target.GetComponent<Image>().color = colors[3];
+		}
+
 		else if (target.GetComponent(typeof(TMPro.TextMeshProUGUI)))
 		{
 			target.GetComponent<TMPro.TextMeshProUGUI>().material.color = colors[3];
@@ -6781,6 +6811,7 @@ public class iTween : MonoBehaviour
 	{
 		if (cameraFade)
 		{
+			
 			cameraFade.GetComponent<UnityEngine.UI.RawImage>().texture = texture;
 		}
 	}
